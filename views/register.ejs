@@ -36,7 +36,7 @@
         const password = $('#exampleInputPassword1').val()
         $.ajax({
             method: "POST",
-            url: `http://localhost:8080/auth/registerpost?name=${name}&password=${password}`,
+            url: `http://localhost:8080/registerpost?name=${name}&password=${password}`,
 
         }).then(function(res) {
             console.log(res)
@@ -44,7 +44,7 @@
                 $('#emailHelp').css('display','block')
             }
             else{
-                url = "/auth/login";
+                url = "/";
                 $( location ).attr("href", url);
 
             }

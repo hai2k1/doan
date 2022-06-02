@@ -14,5 +14,5 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/', tintucRoutes.routes);
-app.use('/auth',authRoutes.routes);
+app.use('/',authRoutes.routes);
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));

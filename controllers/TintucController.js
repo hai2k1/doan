@@ -58,7 +58,17 @@ const danhsachtintuc = async (req, res, next) => {
 
         res.render('tintuc', {tintucArray});
 }
-
+const suatintuc = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const tintuc = await firestore.collection('tintuc').doc(id);
+        const data = await tintuc.get();
+        const tintucArray = data.data();
+        res.render('suatintuc', {tintucArray,id});
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
 const detailtintuc = async (req, res, next) => {
     try {
         const id = req.params.id;
@@ -74,7 +84,7 @@ const detailtintuc = async (req, res, next) => {
 const capnhaptintuc = async (req, res, next) => {
     try {
         const id = req.params.id;
-        const data = req.body;
+        const data = req.query;
         const tintuc = await firestore.collection('tintuc').doc(id);
         await tintuc.update(data);
         res.send('cap nhap thanh cong');
@@ -99,5 +109,6 @@ module.exports = {
     capnhaptintuc,
     xoatintuc,
     viewthemtintuc,
-    listtintuc
+    listtintuc,
+    suatintuc
 }

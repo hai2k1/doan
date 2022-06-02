@@ -40,20 +40,19 @@
         </div>
     </div>
 </nav>
-
 <div class="container mt-5">
     <div class="row clearfix">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Title tin tức</label>
-            <input type="text" class="form-control" id="title" placeholder="title tin tức">
+            <input type="text" class="form-control" id="title" placeholder="title tin tức" value="<%=tintucArray.title%>">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
-            <textarea class="form-control" id="mota" rows="3"></textarea>
+            <textarea class="form-control" id="mota" rows="3"><%=tintucArray.mota%></textarea>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Ảnh</label>
-            <input type="text" class="form-control" id="image" placeholder="link ảnh">
+              <input type="text" class="form-control" id="image" placeholder="link ảnh" value="<%=tintucArray.image%>">
         </div>
         <div class="mb-3">
             <button type="button" id="dang" class="btn btn-primary">Đăng</button>
@@ -71,11 +70,12 @@
         const mota = $('#mota').val()
         const image = $('#image').val()
         $.ajax({
-            method: "POST",
-            url: `http://localhost:8080/themtintuc/?title=${title}&mota=${mota}&image=${image}`,
+            method: "PUT",
+            url: `http://localhost:8080/tintuc/<%=id%>?title=${title}&mota=${mota}&image=${image}`,
 
         }).then(function(res) {
-            console.log(res)
+            url = "/listtintuc";
+            $( location ).attr("href", url);
 
         });
     })

@@ -37,7 +37,7 @@
         const password = $('#exampleInputPassword1').val()
         $.ajax({
             method: "POST",
-            url: `http://localhost:8080/auth/loginpost?email=${name}&password=${password}`,
+            url: `http://localhost:8080/loginpost?email=${name}&password=${password}`,
             data:{
                 email: name,
                 password: password
